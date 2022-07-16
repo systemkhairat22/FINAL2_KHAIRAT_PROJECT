@@ -20,6 +20,8 @@ if(session.getAttribute("currentSessionUser")==null)
 	<a href="ManageProfileAdminController">MANAGE PROFILE</a><br><br>
 	<a href="createmember.jsp">CREATE NEW MEMBER</a><br>
     <a href="ListMemberController">LIST MEMBER</a><br>
+    <a href="ListPaymentController">LIST ONLINE PAYMENT</a><br>
+    <a href="ListPaymentController2">LIST CASH PAYMENT</a><br>
 	<h1>Admin Profile</h1>
 	Admin ID: <c:out value="${a.adminid}"/> <br>
 	Admin Name: <c:out value="${a.add_name}"/> <br>

@@ -16,13 +16,13 @@ public class DaoKhairat {
 	private double payment_amount;
 	private String payment_receipt,bankname;
 	private Date payment_date;
+	
 	//CREATE CASH PAYMENT
 	public void cashPayment(Payment p) {
 		java.util.Date utilDate = p.getPayment_date();
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		paymentid = p.getPaymentid();
 		payment_amount = p.getPayment_amount();
-		payment_receipt = p.getPayment_receipt();
 		memberid = p.getMemberid();
 		
 		try {
@@ -30,11 +30,10 @@ public class DaoKhairat {
 			con = ConnectionManager.getConnection();
 			
 			//create statement
-			ps = con.prepareStatement("INSERT INTO payment(payment_date,payment_amount,payment_receipt,memberid) values(?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO payment(payment_date,payment_amount,memberid) values(?,?,?,?)");
 			ps.setDate(1, sqlDate);
 			ps.setDouble(2, payment_amount);
-			ps.setString(3, payment_receipt);
-			ps.setInt(4, memberid);
+			ps.setInt(3, memberid);
 			//execute query
 			ps.executeUpdate();
 			System.out.println("Successfully inserted");
@@ -55,7 +54,7 @@ public class DaoKhairat {
 		payment_receipt = p.getPayment_receipt();
 		memberid = p.getMemberid();
 		transactionid = p.getTransactionid();
-		bankname = p.getBankname();
+		bankname = p.getBank_name();
 		try {
 			//call getConnection() method
 			con = ConnectionManager.getConnection();
@@ -77,5 +76,120 @@ public class DaoKhairat {
 		}catch (Exception e) {
             e.printStackTrace();
         }
+	}
+	
+	//GET ALL ONLINE PAYMENT
+	public static List<Payment> getAllPayment(){
+		List<Payment> payment = new ArrayList<Payment>();
+		
+		try {
+			//call connection
+			con = ConnectionManager.getConnection();
+			
+			//create statement
+			st = con.createStatement();
+			String sql = "SELECT * FROM online";
+			
+			//execute query
+			rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				Payment p = new Payment();
+				p.setPaymentid(rs.getInt("paymentid"));
+				p.setPayment_date(rs.getDate("payment_date"));
+				p.setPayment_amount(rs.getDouble("payment_amount"));
+				p.setPayment_receipt(rs.getString("payment_receipt"));
+				p.setMemberid(rs.getInt("memberid"));
+				p.setTransactionid(rs.getInt("transactionid"));
+				p.setBank_name(rs.getString("bank_name"));
+				System.out.println("data mana woi??");
+				payment.add(p);
+			}
+			
+			//close connection
+			con.close();
+		}catch(Exception e) {
+  			e.printStackTrace();
+  		}
+		for(Payment pay:payment) {
+			System.out.println(pay.getPaymentid());
+			System.out.println(pay.getPayment_date());
+		}
+		return payment;
+	}
+	
+	//GET ALL CASH PAYMENT
+	public static List<Payment> getAllCashPayment(){
+		List<Payment> payment = new ArrayList<Payment>();
+		
+		try {
+			//call connection
+			con = ConnectionManager.getConnection();
+			
+			//create statement
+			st = con.createStatement();
+			String sql = "SELECT * FROM payment";
+			
+			//execute query
+			rs = st.executeQuery(sql);
+			
+			while(rs.next()) {
+				Payment p = new Payment();
+				p.setPaymentid(rs.getInt("paymentid"));
+				p.setPayment_date(rs.getDate("payment_date"));
+				p.setPayment_amount(rs.getDouble("payment_amount"));
+				p.setMemberid(rs.getInt("memberid"));
+				System.out.println("data mana woi??");
+				payment.add(p);
+			}
+			
+			//close connection
+			con.close();
+		}catch(Exception e) {
+  			e.printStackTrace();
+  		}
+		for(Payment pay:payment) {
+			System.out.println(pay.getPaymentid());
+			System.out.println(pay.getPayment_date());
+		}
+		return payment;
+	}
+	//DELETE ONLINE PAYMENT
+	public void deletePayment(int id) {
+		try {
+			//call getConnection method
+  			con = ConnectionManager.getConnection();
+  			
+  			//create statement
+  			ps = con.prepareStatement("DELETE FROM online WHERE paymentid=?");
+  			ps.setInt(1, id);
+  			
+  			//execute query
+  			ps.executeUpdate();
+  			
+  			//close connection
+  			con.close();
+		}catch (Exception e) {
+  			e.printStackTrace();
+  		}
+	}
+	//DELETE CASH PAYMENT
+	public void deleteCashPayment(int id) {
+		try {
+			//call getConnection method
+  			con = ConnectionManager.getConnection();
+  			
+  			//create statement
+  			ps = con.prepareStatement("DELETE FROM payment WHERE paymentid=?");
+  			ps.setInt(1, id);
+  			
+  			//execute query
+  			ps.executeUpdate();
+  			
+  			//close connection
+  			con.close();
+		}catch (Exception e) {
+  			e.printStackTrace();
+  		}
 	}
 }

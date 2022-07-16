@@ -47,11 +47,10 @@ public class CashPaymentController extends HttpServlet {
 		}
 		
 		p.setPayment_amount(Double.parseDouble(request.getParameter("payment_amount")));
-		p.setPayment_receipt(request.getParameter("payment_receipt"));
 		p.setMemberid((int)session.getAttribute("currentSessionUser"));
 		
 		dao.cashPayment(p);
-		JOptionPane.showMessageDialog(null,"Payment successfull");
+		JOptionPane.showMessageDialog(null,"Please make a payment to our admin");
 		request.setAttribute("m", DaoMember.getMemberById((int)session.getAttribute("currentSessionUser")));
 		RequestDispatcher view = request.getRequestDispatcher("homemember.jsp");
 		view.forward(request, response);

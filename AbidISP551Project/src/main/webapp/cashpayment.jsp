@@ -22,7 +22,6 @@ if (session.getAttribute("currentSessionUser") == null)
 	<a href="paymentmethod.jsp">BACK</a><br>
 	<p>Cash Payment</p>
 	<p>Please make cash payment into our admin</p>
-	<p></p>
 	<p>List of admin and contact number</p>
 	<table border="1">
 		<tr>
@@ -63,11 +62,6 @@ if (session.getAttribute("currentSessionUser") == null)
 							<option value="60">Yearly Payment (RM60)</option>
 						</select>
 					</th>
-				</tr>
-				
-				<tr>
-					<th><label for="payment_receipt">Payment Receipt:</label></th>
-					<th><input type="text"  name="payment_receipt"></th>
 				</tr>
 			</tbody>
 		</table>

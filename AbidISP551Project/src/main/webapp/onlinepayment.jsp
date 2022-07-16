@@ -56,7 +56,7 @@ if (session.getAttribute("currentSessionUser") == null)
 				
 				<tr>
 					<th><label for="payment_receipt">Payment Receipt:</label></th>
-					<th><input type="text"  name="payment_receipt"></th>
+					<th><input type="file" accept="image/pdf" id="payment_receipt" name="payment_receipt"></th>
 				</tr>
 				
 				<tr>

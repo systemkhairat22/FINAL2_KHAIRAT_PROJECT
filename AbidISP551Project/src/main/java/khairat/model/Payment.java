@@ -9,7 +9,7 @@ public class Payment {
 	private String payment_receipt;
 	private int memberid;
 	private int transactionid;
-	private String bankname;
+	private String bank_name;
 	
 	public Payment() {
 		
@@ -50,10 +50,10 @@ public class Payment {
 	public void setTransactionid(int transactionid) {
 		this.transactionid = transactionid;
 	}
-	public String getBankname() {
-		return bankname;
+	public String getBank_name() {
+		return bank_name;
 	}
-	public void setBankname(String bankname) {
-		this.bankname = bankname;
+	public void setBank_name(String bank_name) {
+		this.bank_name = bank_name;
 	}
 }

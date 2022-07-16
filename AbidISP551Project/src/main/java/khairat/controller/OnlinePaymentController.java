@@ -50,7 +50,7 @@ public class OnlinePaymentController extends HttpServlet {
 		p.setPayment_receipt(request.getParameter("payment_receipt"));
 		p.setMemberid((int)session.getAttribute("currentSessionUser"));
 		p.setTransactionid(Integer.parseInt(request.getParameter("transactionid")));
-		p.setBankname(request.getParameter("bankname"));
+		p.setBank_name(request.getParameter("bankname"));
 		
 		dao.onlinePayment(p);
 		JOptionPane.showMessageDialog(null,"Payment successfull");
