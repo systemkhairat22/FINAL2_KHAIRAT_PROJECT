@@ -32,7 +32,7 @@ public class CreateMemberController extends HttpServlet {
 		m.setRepname(request.getParameter("repname"));
 		m.setRepnum(request.getParameter("repnum"));
 		m.setMem_email(request.getParameter("mem_email"));
-		m.setMem_password(request.getParameter("mem_password"));
+		//m.setMem_password(request.getParameter("mem_password"));
 		
 		dao.addMember(m); //invoke method addShawl() in ShawlDAO
 		

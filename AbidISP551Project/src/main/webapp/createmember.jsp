@@ -24,11 +24,11 @@ if(session.getAttribute("currentSessionUser")==null)
 			<tbody>
                    <tr>
                        <th><label for="fullname">Full Name</label></th>
-                       <th><input type="text"  name="mem_name" placeholder="Full Name"></th>
+                       <th><input type="text"  name="mem_name" placeholder="FULLNAME CAPITAL LETTER"></th>
                    </tr>
                    <tr>
                        <th><label for="memIC">IC Number</label></th>
-                       <th><input type="text"  name="mem_icnum" placeholder="000000-00-0000"></th>
+                       <th><input type="text"  name="mem_icnum" placeholder="000000000000-NO DASH"></th>
                    </tr>
                    <tr>
                        <th><label for="age">Age</label></th>
@@ -46,24 +46,17 @@ if(session.getAttribute("currentSessionUser")==null)
                    </tr>
                    <tr>
                        <th><label for="repName">Representative Name</label></th>
-                       <th><input type="text"  name="repname" placeholder=" Representative Full Name"></th>
+                       <th><input type="text"  name="repname" placeholder="FULLNAME CAPITAL LETTER"></th>
                    </tr>
                    <tr>
                        <th><label for="repIC">Representative IC Number</label></th>
-                       <th><input type="text"  name="repnum" placeholder="000000-00-0000"></th>
+                       <th><input type="text"  name="repnum" placeholder="000000000000-NO DASH"></th>
                    </tr>
                    <tr>
                        <th><label for="memEmail">Email</label></th>
                        <th><input type="email"  name="mem_email" placeholder="abc@gmail.com"></th>
                    </tr>
-                   <tr>
-                       <th><label for="memPwd">Password</label></th>
-                       <th><input type="password"  name="mem_password"></th>
-                   </tr>
-                   <tr>
-                       <th><label for="memPwd2">Confirm Password</label></th>
-                       <th><input type="password"name="mem_password"></th>
-                   </tr>
+              
 			</tbody>
 		</table>
 		

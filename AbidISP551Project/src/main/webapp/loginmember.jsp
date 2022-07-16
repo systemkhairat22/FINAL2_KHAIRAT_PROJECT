@@ -13,8 +13,8 @@
 		<table>
 			<tbody>
                    <tr>
-                       <th><label for="memberid">Member ID</label></th>
-                       <th><input type="number"  name="memberid" placeholder="Member id"></th>
+                       <th><label for="mem_icnum">IC Number</label></th>
+                       <th><input type="text"  name="mem_icnum" placeholder="NO DASH"></th>
                    </tr>
                    
                    <tr>

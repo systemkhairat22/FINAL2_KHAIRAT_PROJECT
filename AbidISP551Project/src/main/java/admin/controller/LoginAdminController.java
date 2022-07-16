@@ -23,39 +23,61 @@ public class LoginAdminController extends HttpServlet {
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Admin a = new Admin();
-		a.setAdminid(Integer.parseInt(request.getParameter("adminid")));
+		a.setAdmin_icnum(request.getParameter("admin_icnum"));
 		a.setAdd_password(request.getParameter("add_password"));
-		
-		if(Integer.parseInt(request.getParameter("adminid")) == 201||Integer.parseInt(request.getParameter("adminid")) == 202) {
-			a = DaoAdmin.loginSupervisor(a);
-			if(a.isValid()) {
-				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionUser", a.getAdminid());
-				request.setAttribute("a", DaoAdmin.getAdminById(a.getAdminid()));
-				RequestDispatcher view = request.getRequestDispatcher("homesupervisor.jsp");
-				view.forward(request, response);
-			}
-			else 
-			{
-				JOptionPane.showMessageDialog(null, "Please enter a valid Admin Id & Password", "Error Occurred", JOptionPane.WARNING_MESSAGE);
-				response.sendRedirect("loginadmin.jsp");
-			}
-		}
-		else {
-			a = DaoAdmin.loginAdmin(a);
-			
-			if(a.isValid()) {
-				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionUser", a.getAdminid());
-				request.setAttribute("a", DaoAdmin.getAdminById(a.getAdminid()));
-				RequestDispatcher view = request.getRequestDispatcher("homeadmin.jsp");
-				view.forward(request, response);
-			}
-			else 
-			{
-				JOptionPane.showMessageDialog(null, "Please enter a valid Admin Id & Password", "Error Occurred", JOptionPane.WARNING_MESSAGE);
-				response.sendRedirect("loginadmin.jsp");
-			}
+		//long adminic = Integer.parseInt(request.getParameter("admin_icnum"));
+		String adminic = request.getParameter("admin_icnum");
+		System.out.println(adminic);
+		switch(adminic) {
+			case "000810100717":
+				a = DaoAdmin.loginSupervisor(a);
+				if(a.isValid()) {
+					HttpSession session = request.getSession(true);
+					session.setAttribute("currentSessionUser", a.getAdminid());
+					request.setAttribute("a", DaoAdmin.getAdminById(a.getAdminid()));
+					RequestDispatcher view = request.getRequestDispatcher("homesupervisor.jsp");
+					view.forward(request, response);
+				}
+				else 
+				{
+					JOptionPane.showMessageDialog(null, "Please enter a valid Ic Number & Password", "Error Occurred", JOptionPane.WARNING_MESSAGE);
+					response.sendRedirect("loginadmin.jsp");
+				}
+				System.out.println("Login Supervisor");
+				break;
+			case "670541012342":
+				a = DaoAdmin.loginSupervisor(a);
+				if(a.isValid()) {
+					HttpSession session = request.getSession(true);
+					session.setAttribute("currentSessionUser", a.getAdminid());
+					request.setAttribute("a", DaoAdmin.getAdminById(a.getAdminid()));
+					RequestDispatcher view = request.getRequestDispatcher("homesupervisor.jsp");
+					view.forward(request, response);
+				}
+				else 
+				{
+					JOptionPane.showMessageDialog(null, "Please enter a valid Ic Number & Password", "Error Occurred", JOptionPane.WARNING_MESSAGE);
+					response.sendRedirect("loginadmin.jsp");
+				}
+				System.out.println("Login Supervisor");
+				break;
+			default:
+				a = DaoAdmin.loginAdmin(a);
+				
+				if(a.isValid()) {
+					HttpSession session = request.getSession(true);
+					session.setAttribute("currentSessionUser", a.getAdminid());
+					request.setAttribute("a", DaoAdmin.getAdminById(a.getAdminid()));
+					RequestDispatcher view = request.getRequestDispatcher("homeadmin.jsp");
+					view.forward(request, response);
+				}
+				else 
+				{
+					JOptionPane.showMessageDialog(null, "Please enter a valid Ic Number & Password", "Error Occurred", JOptionPane.WARNING_MESSAGE);
+					response.sendRedirect("loginadmin.jsp");
+				}
+				System.out.println("Login Normal Admin");
+				break;
 		}
 			
 	}

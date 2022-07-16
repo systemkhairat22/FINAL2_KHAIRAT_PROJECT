@@ -10,21 +10,21 @@ public class DaoAdmin {
 	static java.sql.Statement st = null;
 	static ResultSet rs = null;
 	static int adminid;
-	static String add_password;
+	static String add_password,admin_icnum;
 	private int add_age, supervisorid;
-	private String admin_icnum, add_name, add_email, add_phonenum;
+	private String add_name, add_email, add_phonenum;
 	
 	//LOGIN ADMIN
 	public static Admin loginAdmin(Admin a) {
-		adminid = a.getAdminid();
+		admin_icnum = a.getAdmin_icnum();
 		add_password = a.getAdd_password();
 		
 		try {
 			//connect to db
 			con = ConnectionManager.getConnection();
 			//create statement
-			ps=con.prepareStatement("SELECT * FROM admin WHERE adminid = ? AND add_password = ?");
-			ps.setInt(1, adminid );
+			ps=con.prepareStatement("SELECT * FROM admin WHERE admin_icnum = ? AND add_password = ?");
+			ps.setString(1, admin_icnum );
 			ps.setString(2, add_password);
 			
 			//execute query
@@ -44,15 +44,15 @@ public class DaoAdmin {
 	
 	//LOGIN SUPERVISOR
 	public static Admin loginSupervisor(Admin a) {
-		adminid = a.getAdminid();
+		admin_icnum = a.getAdmin_icnum();
 		add_password = a.getAdd_password();
 		
 		try {
 			//connect to db
 			con = ConnectionManager.getConnection();
 			//create statement
-			ps=con.prepareStatement("SELECT * FROM admin WHERE adminid = ? AND add_password = ? AND supervisorid = 0");
-			ps.setInt(1, adminid );
+			ps=con.prepareStatement("SELECT * FROM admin WHERE admin_icnum = ? AND add_password = ? AND supervisorid = 0");
+			ps.setString(1, admin_icnum );
 			ps.setString(2, add_password);
 			
 			//execute query
@@ -112,7 +112,7 @@ public class DaoAdmin {
     	add_age = admin.getAdd_age();
     	add_email = admin.getAdd_email();
     	add_phonenum = admin.getAdd_phonenum();
-    	add_password = admin.getAdd_password();
+    	add_password = add_name.substring(0,2) + admin_icnum.substring(8,12);
     	supervisorid = admin.getSupervisorid();
         
     	try {

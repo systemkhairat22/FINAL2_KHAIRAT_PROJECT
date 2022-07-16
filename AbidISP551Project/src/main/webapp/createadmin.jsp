@@ -8,18 +8,18 @@
 </head>
 <body>
 	<h1>Create Admin</h1>
-	<a href = "ListAdminController">Admin List</a><br>
-	<a href = "ViewSupervisorController">back</a><br>
+	<a href = "ListAdminController">ADMIN LIST</a><br>
+	<a href = "ViewSupervisorController">BACK</a><br>
 	<form action="CreateAdminController" method="post">
 		<table>
 			<tbody>
                    <tr>
                        <th><label for="fullname">Full Name</label></th>
-                       <th><input type="text"  name="add_name" placeholder="Full Name"></th>
+                       <th><input type="text"  name="add_name" placeholder="FULLNAME CAPITAL LETTER"></th>
                    </tr>
                    <tr>
                        <th><label for="addIC">IC Number</label></th>
-                       <th><input type="text"  name="admin_icnum" placeholder="000000-00-0000"></th>
+                       <th><input type="text"  name="admin_icnum" placeholder="000000000000-NO DASH"></th>
                    </tr>
                    <tr>
                        <th><label for="age">Age</label></th>
@@ -33,14 +33,7 @@
                        <th><label for="addEmail">Email</label></th>
                        <th><input type="text"  name="add_email" placeholder="abc@gmail.com "></th>
                    </tr>
-                   <tr>
-                       <th><label for="memPwd">Password</label></th>
-                       <th><input type="password"  name="add_password"></th>
-                   </tr>
-                   <tr>
-                       <th><label for="memPwd2">Confirm Password</label></th>
-                       <th><input type="password"name="add_password"></th>
-                   </tr>
+               
                    
 			</tbody>
 		</table>

@@ -20,7 +20,7 @@ if(session.getAttribute("currentSessionUser")==null)
 	<h1>Supervisor Home</h1>
 	<a href="createadmin.jsp">CREATE NEW ADMIN</a><br>
     <a href="ListAdminController">LIST ADMIN</a><br>
-    <a href="ManageProfileAdminController">MANAGE PROFILE</a><br><br>
+    <a href="ManageProfileSupervisorController">MANAGE PROFILE</a><br><br>
     
     <h1>Supervisor Profile</h1>
     Admin ID: <c:out value="${a.adminid}"/> <br>

@@ -10,22 +10,22 @@ public class DaoMember {
 	static java.sql.Statement st = null;
 	static ResultSet rs = null;
 	private static int memberid;
-	private static String mem_password;
+	private static String mem_password,mem_icnum;
 	private int mem_age;
 	private String mem_name, mem_address, mem_email, mem_phonenum, repname, repnum;
-	private String mem_icnum;
 	
 	//LOGIN MEMBER
 	public static Member loginMember(Member m) {
-		memberid = m.getMemberid();
+		mem_icnum = m.getMem_icnum();
+		//memberid = m.getMemberid();
 		mem_password = m.getMem_password();
 		
 		try {
 			//connect to db
 			con = ConnectionManager.getConnection();
 			//create statement
-			ps=con.prepareStatement("SELECT * FROM member WHERE memberid = ? AND mem_password = ?");
-			ps.setInt(1, memberid);
+			ps=con.prepareStatement("SELECT * FROM member WHERE mem_icnum = ? AND mem_password = ?");
+			ps.setString(1, mem_icnum);
 			ps.setString(2, mem_password);
 			
 			//execute query
@@ -88,7 +88,7 @@ public class DaoMember {
     	mem_address = member.getMem_address();
     	mem_email = member.getMem_email();
     	mem_phonenum = member.getMem_phonenum();
-    	mem_password = member.getMem_password();
+    	mem_password = mem_name.substring(0,2) + mem_icnum.substring(8,12);
     	repname = member.getRepname();
     	repnum = member.getRepnum();
     	

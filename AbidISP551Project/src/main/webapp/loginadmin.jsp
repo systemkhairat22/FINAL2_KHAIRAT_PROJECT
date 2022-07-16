@@ -13,8 +13,8 @@
 		<table>
 			<tbody>
                    <tr>
-                       <th><label for="adminid">Admin ID</label></th>
-                       <th><input type="number"  name="adminid" placeholder="Admin id"></th>
+                       <th><label for="admin_icnum">Ic Number</label></th>
+                       <th><input type="text"  name="admin_icnum" placeholder="NO DASH"></th>
                    </tr>
                    
                    <tr>

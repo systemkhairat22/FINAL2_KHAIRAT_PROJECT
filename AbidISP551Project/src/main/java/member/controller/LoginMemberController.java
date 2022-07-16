@@ -24,7 +24,7 @@ public class LoginMemberController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Member m = new Member();
-		m.setMemberid(Integer.parseInt(request.getParameter("memberid")));
+		m.setMem_icnum(request.getParameter("mem_icnum"));
 		m.setMem_password(request.getParameter("mem_password"));
 		
 		m = DaoMember.loginMember(m);
@@ -38,7 +38,7 @@ public class LoginMemberController extends HttpServlet {
 		}
 		else 
 		{
-			JOptionPane.showMessageDialog(null, "Please enter a valid Member Id & Password", "Error Occurred", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Please enter a valid Ic Number & Password", "Error Occurred", JOptionPane.WARNING_MESSAGE);
 			response.sendRedirect("loginmember.jsp");
 		}
 	}

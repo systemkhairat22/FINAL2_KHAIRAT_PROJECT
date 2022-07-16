@@ -18,8 +18,8 @@ if(session.getAttribute("currentSessionUser")==null)
 </head>
 <body>
 	
-<a href="createadmin.jsp">Create Admin</a><br><br>
-<a href="ViewSupervisorController">Back</a><br><br>
+<a href="createadmin.jsp">CREATE ADMIN</a><br><br>
+<a href="ViewSupervisorController">BACK</a><br><br>
 		<table border="1">
 			<tr>
 				<th>Admin ID</th>

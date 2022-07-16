@@ -28,7 +28,7 @@ public class CreateAdminController extends HttpServlet {
 		a.setAdd_age(Integer.parseInt(request.getParameter("add_age")));
 		a.setAdd_phonenum(request.getParameter("add_phonenum"));
 		a.setAdd_email(request.getParameter("add_email"));
-		a.setAdd_password(request.getParameter("add_password"));
+		//a.setAdd_password(request.getParameter("add_password"));
 		a.setSupervisorid((int)session.getAttribute("currentSessionUser"));
 		dao.addAdmin(a); //invoke method addmember() in memberDAO
 		
