@@ -49,7 +49,7 @@ if (session.getAttribute("currentSessionUser") == null)
 					<td><input type="text" name="add_phonenum" value="${a.add_phonenum}"/></td>
 				</tr>
 				<tr>
-					<td><input type="hidden" name="adminid" value="<c:out value="${a.adminid}"/><br><br></td>
+					<td><input type="hidden" name="adminid" value="<c:out value="${a.adminid}"/>"/><br><br></td>
 				</tr>
 			</tbody>
 		</table>
