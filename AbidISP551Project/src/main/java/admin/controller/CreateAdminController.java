@@ -22,7 +22,7 @@ public class CreateAdminController extends HttpServlet {
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Admin a = new Admin();
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		a.setAdd_name(request.getParameter("add_name"));
 		a.setAdmin_icnum(request.getParameter("admin_icnum"));
 		a.setAdd_age(Integer.parseInt(request.getParameter("add_age")));

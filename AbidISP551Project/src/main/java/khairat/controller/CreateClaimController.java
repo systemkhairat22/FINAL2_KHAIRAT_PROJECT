@@ -3,9 +3,6 @@ package khairat.controller;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,47 +18,39 @@ import javax.swing.JOptionPane;
 import khairat.dao.*;
 import khairat.model.*;
 import member.dao.DaoMember;
-
 @MultipartConfig
-@WebServlet("/OnlinePaymentController")
-public class OnlinePaymentController extends HttpServlet {
+@WebServlet("/CreateClaimController")
+public class CreateClaimController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private DaoKhairat dao;   
-    public OnlinePaymentController() {
+	private DaoKhairat dao;
+    public CreateClaimController() {
         super();
         dao = new DaoKhairat();
     }
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = (int) request.getSession().getAttribute("currentSessionUser");
 		request.setAttribute("m", DaoMember.getMemberById(id));
-	    RequestDispatcher view = request.getRequestDispatcher("onlinepayment.jsp");
+	    RequestDispatcher view = request.getRequestDispatcher("createapplicationclaim.jsp");
 	    view.forward(request, response);
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In do post method");
-		Payment p = new Payment();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Claimkhairat c = new Claimkhairat();
 		HttpSession session = request.getSession();
 		
-		try {
-			Date parsedDate = format.parse(request.getParameter("payment_date"));
-			p.setPayment_date(parsedDate);
-		}catch (ParseException e) {
-			e.printStackTrace();
-		}
 		//image upload
-		Part file = request.getPart("payment_receipt");
-		p.setPayment_amount(Double.parseDouble(request.getParameter("payment_amount")));
-		p.setPayment_receipt(file.getSubmittedFileName());//sent file name into model
-		System.out.println("Selected Image File Name : " + file.getSubmittedFileName());
-		p.setMemberid((int)session.getAttribute("currentSessionUser"));
-		p.setTransactionid(request.getParameter("transactionid"));
-		p.setBank_name(request.getParameter("bankname"));
-		dao.onlinePayment(p);
+		Part file = request.getPart("deathcertificate");
+		
+		c.setAppclaim_status("PENDING");
+		c.setMemberid((int)session.getAttribute("currentSessionUser"));
+		c.setAdminid(0);
+		c.setDeathcertificate(file.getSubmittedFileName());
+		dao.applicationClaim(c);
 		
 		//set an upload path of file
-		String uploadPath = "C:/Users/ASUS/git/FINAL2_KHAIRAT_PROJECT/AbidISP551Project/src/main/webapp/receiptimg/" + file.getSubmittedFileName();
+		String uploadPath = "C:/Users/ASUS/git/FINAL2_KHAIRAT_PROJECT/AbidISP551Project/src/main/webapp/deathcertificateimg/" + file.getSubmittedFileName();
 		System.out.println("Upload Path : "+uploadPath);
 		
 		//uploading selected file into folder
@@ -76,7 +65,7 @@ public class OnlinePaymentController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		JOptionPane.showMessageDialog(null,"Payment successfull");
+		JOptionPane.showMessageDialog(null,"Application form submited");
 		request.setAttribute("m", DaoMember.getMemberById((int)session.getAttribute("currentSessionUser")));
 		RequestDispatcher view = request.getRequestDispatcher("homemember.jsp");
 		view.forward(request, response);

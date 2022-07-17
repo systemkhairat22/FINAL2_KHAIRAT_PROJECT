@@ -22,7 +22,7 @@ public class DeleteAdminController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("adminid"));
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		dao.deleteadmin(id);
 		request.setAttribute("admin", DaoAdmin.getAllAdmin((int)session.getAttribute("currentSessionUser")));
 		RequestDispatcher view = request.getRequestDispatcher("listadmin.jsp");

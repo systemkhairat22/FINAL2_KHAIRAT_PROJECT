@@ -65,7 +65,7 @@ if (session.getAttribute("currentSessionUser") == null)
 				
 				<tr>
 					<th><label for="payment_receipt">Transaction receipt:</label></th>
-					<th><input type="file" name="payment_receipt" enctype="multipart/form-data"></th>
+					<th><input type="file" name="payment_receipt"></th>
 				</tr>
 				
 			</tbody>

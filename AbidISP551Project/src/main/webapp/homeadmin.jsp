@@ -22,6 +22,7 @@ if(session.getAttribute("currentSessionUser")==null)
     <a href="ListMemberController">LIST MEMBER</a><br>
     <a href="ListPaymentController">LIST ONLINE PAYMENT</a><br>
     <a href="ListPaymentController2">LIST CASH PAYMENT</a><br>
+    <a href="ListClaimController">LIST OF APPLICATION CLAIM</a><br><br>
 	<h1>Admin Profile</h1>
 	Admin ID: <c:out value="${a.adminid}"/> <br>
 	Admin Name: <c:out value="${a.add_name}"/> <br>

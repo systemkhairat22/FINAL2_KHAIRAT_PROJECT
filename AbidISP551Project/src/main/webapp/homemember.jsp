@@ -17,8 +17,9 @@ if(session.getAttribute("currentSessionUser")==null)
 <title>Home Member</title>
 </head>
 <body>
-	<a href="ManageProfileMemberController">Manage profile</a><br><br>
-	<a href="paymentmethod.jsp">MAKE PAYMENT</a><br>	
+	<a href="ManageProfileMemberController">MANAGE PROFILE</a><br><br>
+	<a href="paymentmethod.jsp">MAKE PAYMENT</a><br>
+	<a href="CreateClaimController">CLAIM KHAIRAT</a><br>	
 	<h1>Member Profile</h1>
 	Member ID: <c:out value="${m.memberid}"/> <br>
 	Member Name: <c:out value="${m.mem_name}"/> <br>

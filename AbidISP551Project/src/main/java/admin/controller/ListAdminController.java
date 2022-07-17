@@ -20,7 +20,7 @@ public class ListAdminController extends HttpServlet {
         dao = new DaoAdmin();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		request.setAttribute("admin", DaoAdmin.getAllAdmin((int)session.getAttribute("currentSessionUser")));
 		RequestDispatcher view = request.getRequestDispatcher("listadmin.jsp");
 		view.forward(request, response);

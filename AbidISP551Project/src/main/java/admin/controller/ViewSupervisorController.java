@@ -21,7 +21,7 @@ public class ViewSupervisorController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		int id = (int)session.getAttribute("currentSessionUser");
 		request.setAttribute("a", DaoAdmin.getAdminById(id));
 		RequestDispatcher view = request.getRequestDispatcher("homesupervisor.jsp");
