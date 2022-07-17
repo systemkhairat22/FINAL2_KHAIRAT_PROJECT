@@ -1,8 +1,12 @@
 package khairat.dao;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
+
+import javax.servlet.http.Part;
 
 import connectionDB.*;
 import khairat.model.*;
@@ -12,11 +16,11 @@ public class DaoKhairat {
 	static java.sql.Statement st = null;
 	static ResultSet rs = null;
 	
-	private int paymentid,memberid,transactionid;
+	private int paymentid,memberid;
 	private double payment_amount;
-	private String payment_receipt,bankname;
+	private String bankname,transactionid,payment_receipt;
 	private Date payment_date;
-	
+	private String inputFile ;
 	//CREATE CASH PAYMENT
 	public void cashPayment(Payment p) {
 		java.util.Date utilDate = p.getPayment_date();
@@ -65,7 +69,7 @@ public class DaoKhairat {
 			ps.setDouble(2, payment_amount);
 			ps.setString(3, payment_receipt);
 			ps.setInt(4, memberid);
-			ps.setInt(5, transactionid);
+			ps.setString(5, transactionid);
 			ps.setString(6, bankname);
 			//execute query
 			ps.executeUpdate();
@@ -100,7 +104,7 @@ public class DaoKhairat {
 				p.setPayment_amount(rs.getDouble("payment_amount"));
 				p.setPayment_receipt(rs.getString("payment_receipt"));
 				p.setMemberid(rs.getInt("memberid"));
-				p.setTransactionid(rs.getInt("transactionid"));
+				p.setTransactionid(rs.getString("transactionid"));
 				p.setBank_name(rs.getString("bank_name"));
 				System.out.println("data mana woi??");
 				payment.add(p);
@@ -191,5 +195,33 @@ public class DaoKhairat {
 		}catch (Exception e) {
   			e.printStackTrace();
   		}
+	}
+	
+	//VIEW RECEIPT PAYMENT
+	public static Payment viewReceiptById(int paymentid) {
+		Payment p = new Payment();
+		try {
+			//call getConnection method
+    		con = ConnectionManager.getConnection();
+    		
+    		//create statement
+    		ps=con.prepareStatement ("SELECT paymentid,payment_receipt FROM online WHERE paymentid =?");
+    		ps.setInt(1, paymentid);
+    		
+    		//execute query
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				p.setPaymentid(rs.getInt("paymentid"));
+				p.setPayment_receipt(rs.getString("payment_receipt"));
+				System.out.println("Payment receipt :" + rs.getString("payment_receipt"));
+			}
+			
+			//close connection
+			con.close();
+		}catch(Exception e) {
+    		e.printStackTrace();
+		}
+		return p;
 	}
 }

@@ -2,13 +2,15 @@ package khairat.model;
 
 import java.util.Date;
 
+import javax.servlet.http.Part;
+
 public class Payment {
 	private int paymentid;
 	private Date payment_date;
 	private double payment_amount;
-	private String payment_receipt;
+	private String  payment_receipt;
 	private int memberid;
-	private int transactionid;
+	private String transactionid;
 	private String bank_name;
 	
 	public Payment() {
@@ -44,10 +46,10 @@ public class Payment {
 	public void setMemberid(int memberid) {
 		this.memberid = memberid;
 	}
-	public int getTransactionid() {
+	public String getTransactionid() {
 		return transactionid;
 	}
-	public void setTransactionid(int transactionid) {
+	public void setTransactionid(String transactionid) {
 		this.transactionid = transactionid;
 	}
 	public String getBank_name() {

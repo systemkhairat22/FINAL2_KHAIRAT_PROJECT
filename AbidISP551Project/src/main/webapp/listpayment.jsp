@@ -34,7 +34,7 @@ if(session.getAttribute("currentSessionUser")==null)
 				<td><c:out value="${p.paymentid}"/></td>
 				<td><c:out value="${p.payment_date}"/></td>
 				<td><c:out value="RM${p.payment_amount}"/></td>
-				<td><c:out value="${p.payment_receipt}"/></td>
+				<td><a class="btn btn-primary" href="ViewReceiptController?paymentid=<c:out value="${p.paymentid}"/>">View Receipt</a></td>
 				<td><c:out value="${p.memberid}"/></td>
 				<td><c:out value="${p.transactionid}"/></td>
 				<td><c:out value="${p.bank_name}"/></td>

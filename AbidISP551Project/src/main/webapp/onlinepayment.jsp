@@ -20,12 +20,12 @@ if (session.getAttribute("currentSessionUser") == null)
 </head>
 <body>
 	<a href="paymentmethod.jsp">BACK</a><br>
-	<h4>Online payment</h4>
-	<h4>Please Bank in into</h4>
-	<h4>151601767668</h4>
-	<h4>Maybank</h4>
-	<h4>Masjid Jamek Gelang Patah</h4>
-	<form action="OnlinePaymentController" method="post">
+	<h3>Online payment</h3>
+	<p>Please Bank in into</p>
+	<p>151601767668</p>
+	<p>Maybank</p>
+	<p>Masjid Jamek Gelang Patah</h4>
+	<form action="OnlinePaymentController" method="post" enctype="multipart/form-data">
 		<table>
 			<tbody>
 				<tr>
@@ -53,12 +53,6 @@ if (session.getAttribute("currentSessionUser") == null)
 						</select>
 					</th>
 				</tr>
-				
-				<tr>
-					<th><label for="payment_receipt">Payment Receipt:</label></th>
-					<th><input type="file" accept="image/pdf" id="payment_receipt" name="payment_receipt"></th>
-				</tr>
-				
 				<tr>
 					<th><label for="transactionid">Transaction id:</label></th>
 					<th><input type="text"  name="transactionid"></th>
@@ -68,6 +62,12 @@ if (session.getAttribute("currentSessionUser") == null)
 					<th><label for="bankname">Bank Name:</label></th>
 					<th><input type="text"  name="bankname"></th>
 				</tr>
+				
+				<tr>
+					<th><label for="payment_receipt">Transaction receipt:</label></th>
+					<th><input type="file" name="payment_receipt" enctype="multipart/form-data"></th>
+				</tr>
+				
 			</tbody>
 		</table>
 		<input type="submit" value="Submit"/>
