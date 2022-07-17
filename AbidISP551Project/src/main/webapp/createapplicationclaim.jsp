@@ -19,6 +19,7 @@ if (session.getAttribute("currentSessionUser") == null)
 <title>Claim Khairat Application Form</title>
 </head>
 <body>
+	<a href = "ViewMemberController2">BACK</a><br><br>
 	<h1>Claim appplication form</h1>
 	<form action="CreateClaimController" method="post" enctype="multipart/form-data">
 		<table>
