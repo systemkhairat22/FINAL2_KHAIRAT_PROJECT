@@ -347,7 +347,9 @@ public class DaoKhairat {
 	   		 	con = ConnectionManager.getConnection ();
 	   		 	
 		   		//create statement
-		   		ps = con.prepareStatement("UPDATE applicationclaim SET adminid=?,appclaim_status=?, WHERE applicationid=?");
+		   		ps = con.prepareStatement("ALTER TABLE applicationclaim DROP CONSTRAINT applicationclaim_adminid_fkey"
+		   				+ "UPDATE applicationclaim SET adminid=?,appclaim_status=?, WHERE applicationid=?"
+		   				+ "ALTER TABLE applicationclaim ADD CONSTRAINT applicationclaim_adminid_fkey FOREIGN KEY (adminid) REFERENCES admin (adminid)");
 		   		ps.setInt(1, adminid);
 		   		ps.setString(2, "DECLINE");
 		   		ps.setInt(3, applicationid);
