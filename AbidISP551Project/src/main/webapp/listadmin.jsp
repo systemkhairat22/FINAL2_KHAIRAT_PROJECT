@@ -52,7 +52,7 @@ if(session.getAttribute("currentSessionUser")==null)
 			</tr>
 			</c:forEach>
 		</table>
-		
+			
 	<script>
 		function confirmation(id) {
 			console.log(id);
