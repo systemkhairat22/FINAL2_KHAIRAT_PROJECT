@@ -47,13 +47,13 @@ if(session.getAttribute("currentSessionUser")==null)
 			   
 				<td><a class="btn btn-primary" href="ViewAdminController?adminid=<c:out value="${a.adminid}"/>">View</a></td>
 				<td><a class="btn btn-primary" href="UpdateAdminController?adminid=<c:out value="${a.adminid}"/>">Update</a></td>
-				<td><a class="btn btn-primary" href="DeleteAdminController?adminid=<c:out value="${a.adminid}"/>">Delete</a></td>
+				<td><a class="btn btn-primary" href="DeleteAdminController?adminid=<c:out value="${a.adminid}"/>" onclick= "confirmation(this.id)">Delete</a></td>
 				
 			</tr>
 			</c:forEach>
 		</table>
 		
-		<!-- <script>
+	<script>
 		function confirmation(id) {
 			console.log(id);
 			var r = confirm("Are you sure you want to delete?");
@@ -64,7 +64,7 @@ if(session.getAttribute("currentSessionUser")==null)
 				return false;
 			}
 		}
-		</script> -->	
+		</script>	
 	
 </body>
 </html>

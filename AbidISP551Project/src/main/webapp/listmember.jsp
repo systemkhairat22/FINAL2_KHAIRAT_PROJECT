@@ -49,10 +49,24 @@ if(session.getAttribute("currentSessionUser")==null)
 							
 				<td><a class="btn btn-primary" href="ViewMemberController?memberid=<c:out value="${m.memberid}"/>">View</a></td>
 				<td><a class="btn btn-primary" href="UpdateMemberController?memberid=<c:out value="${m.memberid}"/>">Update</a></td>
-				<td><a class="btn btn-primary" href="DeleteMemberController?memberid=<c:out value="${m.memberid}"/>">Delete</a></td>
+				<td><a class="btn btn-primary" href="DeleteMemberController?memberid=<c:out value="${m.memberid}"/>" onclick= "confirmation(this.id)">Delete</a></td>
 				
 			</tr>
 			</c:forEach>
 		</table>
+		
+			
+	<script>
+		function confirmation(id) {
+			console.log(id);
+			var r = confirm("Are you sure you want to delete?");
+			if (r == true) {
+				location.href = 'deletemembercontroller?memberid=' + id;
+				alert("Member successfully deleted");
+			} else {
+				return false;
+			}
+		}
+		</script>	
 </body>
 </html>
